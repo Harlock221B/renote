@@ -1,7 +1,8 @@
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { AboutUs } from "./components/AboutUs";
-import { HowItWorks } from "./components/HowItWorks"; // 1. Importe aqui
+import { HowItWorks } from "./components/HowItWorks"; 
+import { Faq } from "./components/Faq"; // 1. IMPORTAR O NOVO COMPONENTE
 
 export default function Home() {
   return (
@@ -9,18 +10,21 @@ export default function Home() {
       {/* Header Fixo */}
       <Header />
 
-      {/* Seção Hero (ocupa a primeira tela) */}
+      {/* 1. Apresentação (Início) */}
       <Hero />
 
-      {/* Seção "Quem Somos" (abaixo da primeira tela) */}
+      {/* 2. Como Vender */}
+      <HowItWorks />
+      
+      {/* 3. Sobre Nós (O que compramos, marcas, etc.) */}
       <AboutUs />
 
-      {/* 2. Adicione a nova seção aqui */}
-      <HowItWorks />
+      {/* 4. Perguntas Frequentes (FAQ) */}
+      <Faq /> {/* 2. ADICIONAR A SEÇÃO AQUI */}
 
-      {/* Você pode adicionar um Footer simples aqui */}
+      {/* Rodapé Simples */}
       <footer className="w-full text-center p-8 text-gray-400 border-t border-white/10">
-        ReNewTech © 2025 - Todos os direitos reservados.
+        NotePago © 2025 - Todos os direitos reservados.
       </footer>
     </main>
   );
