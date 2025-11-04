@@ -4,8 +4,21 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
-// 1. Defina o conteúdo do FAQ (sem alteração)
-const faqData = [
+// 1. Defina o TIPO de um item do FAQ
+type FaqItemType = {
+  question: string;
+  answer: string;
+};
+
+// 2. Defina o TIPO das props do componente FaqItem
+interface FaqItemProps {
+  item: FaqItemType;
+  isOpen: boolean;
+  onClick: () => void;
+}
+
+// 3. Aplique o tipo ao seu array de dados
+const faqData: FaqItemType[] = [
   {
     question: "1. O que posso vender?",
     answer: "Você pode vender computadores, notebooks, servidores, monitores, impressoras e outros tipos de material de informática. Entre em contato para avaliarmos."
@@ -28,8 +41,8 @@ const faqData = [
   }
 ];
 
-// Componente para um item individual do FAQ
-function FaqItem({ item, isOpen, onClick }) {
+// 4. Aplique a interface de props à função
+function FaqItem({ item, isOpen, onClick }: FaqItemProps) {
   return (
     <div className="border border-white/10 rounded-2xl bg-black/20 backdrop-blur-md shadow-lg overflow-hidden">
       {/* A Pergunta (botão clicável) */}
@@ -40,10 +53,7 @@ function FaqItem({ item, isOpen, onClick }) {
         <span className="text-lg md:text-xl font-semibold text-white">{item.question}</span>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
-          
-          // ATUALIZAÇÃO 1: Animação de mola ("spring") para o ícone
           transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-          
         >
           <ChevronDown className="text-green-400" size={24} />
         </motion.div>
@@ -61,10 +71,7 @@ function FaqItem({ item, isOpen, onClick }) {
               open: { opacity: 1, height: 'auto', y: 0 },
               collapsed: { opacity: 0, height: 0, y: -10 }
             }}
-            
-            // ATUALIZAÇÃO 2: Animação "spring" para o painel abrir
             transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-            
             className="px-6 pb-6"
           >
             <p className="text-gray-200">{item.answer}</p>
@@ -77,9 +84,9 @@ function FaqItem({ item, isOpen, onClick }) {
 
 // Componente principal do FAQ (sem alteração)
 export function Faq() {
-  const [activeIndex, setActiveIndex] = useState(null); 
+  const [activeIndex, setActiveIndex] = useState<number | null>(null); // (Bônus: tipagem para o state)
 
-  const handleClick = (index) => {
+  const handleClick = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
