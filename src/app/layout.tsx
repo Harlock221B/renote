@@ -6,7 +6,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "ReNewTech - Notebooks Usados com Garantia",
+  title: "NotePago - Notebooks Usados com Garantia",
   description: "Especialistas em venda e revenda de notebooks usados e revisados.",
 };
 
