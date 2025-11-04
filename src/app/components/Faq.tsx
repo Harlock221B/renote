@@ -4,13 +4,12 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
-// 1. Defina o TIPO de um item do FAQ
+// --- Tipos (sem alteração) ---
 type FaqItemType = {
   question: string;
   answer: string;
 };
 
-// 2. Defina o TIPO das props do componente FaqItem
 interface FaqItemProps {
   item: FaqItemType;
   isOpen: boolean;
@@ -35,13 +34,17 @@ const faqData: FaqItemType[] = [
     question: "4. Sou pessoa física, posso vender meu material?",
     answer: "Sim! Compramos tanto de pessoas físicas (CPF) quanto de pessoas jurídicas (CNPJ). O processo é simples e seguro para todos."
   },
+  
+  // ===========================================
+  // --- ATUALIZAÇÃO DA PERGUNTA 5 ---
+  // ===========================================
   {
-    question: "5. Vocês compram equipamentos quebrados?",
-    answer: "Não compramos equipamentos quebrados, com telas trincadas ou que não ligam. Focamos em equipamentos que podem ser revisados e revendidos com garantia."
+    question: "5. Vocês compram equipamentos com defeito?",
+    answer: "Sim! Aceitamos equipamentos com defeitos (como bateria viciada, tela com defeito, etc.). Nesses casos, a avaliação será mais baixa, pois o valor do conserto será descontado da proposta final."
   }
 ];
 
-// 4. Aplique a interface de props à função
+// --- Componente FaqItem (sem alteração) ---
 function FaqItem({ item, isOpen, onClick }: FaqItemProps) {
   return (
     <div className="border border-white/10 rounded-2xl bg-black/20 backdrop-blur-md shadow-lg overflow-hidden">
@@ -82,9 +85,9 @@ function FaqItem({ item, isOpen, onClick }: FaqItemProps) {
   );
 }
 
-// Componente principal do FAQ (sem alteração)
+// --- Componente Faq (sem alteração) ---
 export function Faq() {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null); // (Bônus: tipagem para o state)
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const handleClick = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);

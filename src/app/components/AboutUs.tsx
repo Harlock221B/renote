@@ -5,7 +5,7 @@ import type { Variants } from 'framer-motion';
 import Link from 'next/link';
 import { 
   Laptop, Monitor, Printer, Server, 
-     Cable, Power, BatteryCharging, Recycle 
+  Cable, Power, BatteryCharging, Recycle 
 } from 'lucide-react';
 import { 
   IoLogoWhatsapp 
@@ -14,15 +14,15 @@ import {
   SiDell, SiLenovo, SiAsus // Lista de marcas corrigida
 } from 'react-icons/si'; 
 
-// --- Lista de Itens ---
+// --- Lista de Itens (Atualizada por você) ---
 const itemsWeBuy = [
   { icon: Laptop, name: "Computadores" },
   { icon: Monitor, name: "Monitores" },
-  { icon: Printer, name: "Impressoras" },
-  { icon: Server, name: "Servidores" },
+  // { icon: Printer, name: "Impressoras" },
+  // { icon: Server, name: "Servidores" },
   { icon: Cable, name: "Cabos" },
-  { icon: Power, name: "Fontes" },
-  { icon: BatteryCharging, name: "Nobreaks" }
+  // { icon: Power, name: "Fontes" },
+  // { icon: BatteryCharging, name: "Nobreaks" }
 ];
 
 // --- Lista de Marcas (Corrigida e Atualizada) ---
@@ -36,6 +36,7 @@ const brands = [
 const WHATSAPP_NUMBER = "5519984229260"; 
 const WHATSAPP_MESSAGE_SELL = "Olá! Tenho um equipamento usado (notebook, etc.) e gostaria de vendê-lo. Como funciona?";
 const WHATSAPP_LINK_SELL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE_SELL)}`;
+
 // --- Variantes de Animação ---
 const gridContainerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -64,7 +65,6 @@ const logoVariants: Variants = {
 
 export function AboutUs() {
   return (
-    // Adicionado o id="sobre" para a âncora
     <motion.section 
       id="sobre"
       className="container mx-auto max-w-6xl px-6 py-20 md:py-32"
@@ -113,7 +113,10 @@ export function AboutUs() {
       </h2>
       
       <motion.div 
-        className="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6"
+        // ==============================================
+        // --- CORREÇÃO APLICADA AQUI ---
+        // ==============================================
+        className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6"
         variants={gridContainerVariants}
         initial="hidden"
         whileInView="visible"
@@ -154,7 +157,6 @@ export function AboutUs() {
             title={brand.name}
             className="text-gray-400 transition-all duration-300 hover:text-white hover:scale-110"
           >
-            {/* Ícones de fabricantes aumentados */}
             <brand.icon size={70} />
           </motion.div>
         ))}
